@@ -1,0 +1,18 @@
+<header class="bg-blue-500 mx-auto flex justify-between p-4">
+  <p class="text-white font-sans">Notes App</p>
+</header>
+<div class="flex m-5 gap-5 flex-col-reverse md:flex-row h-max">
+  <div class="border rounded p-5 sm:basis-2/5">
+    <app-list-note></app-list-note>
+  </div>
+  <div
+    *ngIf="showAdd || showUpdate"
+    class="border h-fit rounded p-5 sm:basis-3/5"
+  >
+    <ng-container *ngIf="showAdd"><app-add-note></app-add-note></ng-container>
+
+    <ng-container *ngIf="showUpdate"
+      ><app-update-note></app-update-note
+    ></ng-container>
+  </div>
+</div>

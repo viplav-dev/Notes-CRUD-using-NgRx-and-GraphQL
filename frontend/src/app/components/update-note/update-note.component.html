@@ -1,0 +1,37 @@
+<h2 class="text-2xl mb-5">Update Note</h2>
+
+<input
+  type="text"
+  name="title"
+  id="title"
+  placeholder="Title for the note"
+  class="bg-slate-50 outline-none border w-full p-3 my-3"
+  value="{{ singleNote.title }}"
+  required
+  #title
+/>
+<textarea
+  placeholder="Description for the note"
+  class="bg-slate-50 outline-none border w-full p-3"
+  name="note"
+  id="note"
+  rows="3"
+  cols="50"
+  value="{{ singleNote.description }}"
+  #description
+></textarea>
+
+<button
+  value="Update"
+  class="bg-blue-500 w-full px-8 py-2 my-2 text-white rounded float-right hover:bg-blue-600 active:bg-blue-700 focus:ring focus:ring-blue-100 md:w-fit"
+  (click)="updateNoteItem(title.value, description.value, singleNote.id)"
+>
+  Update
+</button>
+<button
+  value="Cancel"
+  class="bg-rose-500 w-full px-8 py-2 my-2 text-white rounded float-right hover:bg-rose-600 active:bg-rose-700 focus:ring focus:ring-rose-100 md:w-fit md:mx-3"
+  (click)="hideUpdateComponent()"
+>
+  Cancel
+</button>

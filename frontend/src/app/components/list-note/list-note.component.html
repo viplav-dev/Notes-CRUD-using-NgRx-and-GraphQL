@@ -1,0 +1,49 @@
+<div class="flex flex-col justify-start align-middle">
+  <div class="flex flex-row justify-between">
+    <p class="text-2xl">All Notes</p>
+    <button
+      class="bg-blue-500 px-5 text-white hover:bg-blue-600 active:bg-blue-700 focus:ring focus:ring-blue-100 rounded"
+      (click)="showAddNote()"
+    >
+      <img
+        src="https://icon-library.com/images/white-plus-icon/white-plus-icon-3.jpg"
+        height="10px"
+        width="10px"
+        alt=""
+      />
+    </button>
+  </div>
+  <div
+    class="flex flex-col border rounded my-5 overflow-y-scroll overflow-x-hidden h-[calc(100vh-210px)] snap-y"
+  >
+    <ng-container
+      *ngIf="(notes$ | async )?.length  != 0 ; else emptyTemplate "
+    >
+      <div
+        class="flex justify-between border-b p-3 hover:bg-blue-50 active:bg-blue-100 cursor-pointer snap-start"
+        *ngFor="let note of (notes$ | async)" (click)="onUpdateNote(note.id)"
+      >
+        <div  class="basis-5/6">
+          {{ note.title }}
+        </div>
+        <div class="self-center">
+          <button
+            (click)="ondeleteNote(note.id)"
+            class="bg-blue-300 rounded hover:bg-blue-400 active:bg-blue-500 mx-5"
+          >
+            <img
+              src="../../../assets/checkmark.png"
+              height="25px"
+              width="25px"
+            />
+          </button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #emptyTemplate>
+      <div class="flex justify-center items-center h-full">
+        <p class="text-2xl">No Notes Found!</p>
+      </div>
+    </ng-template>
+  </div>
+</div>
